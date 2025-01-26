@@ -3,13 +3,13 @@ KnowledgeBase
 Schedule
 -----
 * ### 20250127
-    - [x] Flowchart
+    - [ ] Flowchart
 * ### 20250128
-    - [x] Front-end: Web
+    - [ ] Front-end: Web
 * ### 20250129
-    - [x] Back-end: Cache Augmented Generation
+    - [ ] Back-end: Cache Augmented Generation
 * ### 20250130
-    - [x] Back-end: Retrieval Augmented Generation
+    - [ ] Back-end: Retrieval Augmented Generation
 * ### 20250131
-    - [x] Done
+    - [ ] Done
 <br />
