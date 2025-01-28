@@ -26,7 +26,7 @@ Flowchart
 -----
 * ### 後端開發: Python、FastAPI、LangChain。
 * ### 資料儲存與檢索: MySQL、FakeRedis、FAISS。
-* ### 前端設計: Tailwind。
+* ### 前端設計: Bootstrap。
 * ### 模型與生成: Ollama (gemma2:2b)。
 * ### 部署: Docker。
 <br />
