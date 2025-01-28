@@ -22,7 +22,7 @@ Flowchart
     ![image](https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/%E7%9F%A5%E8%AD%98%E5%BA%AB%E6%A7%8B%E5%BB%BA%E6%B5%81%E7%A8%8B%E5%9C%96.png)
 <br />
 
-Flowchart
+TechStack
 -----
 * ### 後端開發: Python、FastAPI、LangChain。
 * ### 資料儲存與檢索: MySQL、FakeRedis、FAISS。
