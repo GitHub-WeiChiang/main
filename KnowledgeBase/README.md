@@ -5,7 +5,7 @@ Schedule
 * ### Day 1: 20250127
     - [x] Flowchart
 * ### Day 2: 20250128
-    - [ ] Front-end: Web
+    - [x] Front-end: Web
 * ### Day 3: 20250129
     - [ ] Back-end: Cache Augmented Generation
 * ### Day 4: 20250130
