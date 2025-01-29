@@ -43,7 +43,7 @@ async function sendMessage() {
     // 顯示 Loading
     showLoading();
 
-    let topK = document.getElementById("top-k").value;
+    let topK = Math.max(1, parseInt(document.getElementById("top-k").value));
     let temperature = document.getElementById("temperature").value;
 
     try {
@@ -106,10 +106,12 @@ function addMessage(text, className, source = "") {
 
 function showLoading() {
     document.getElementById("loading").style.display = "block";
+    document.getElementById("send-button").disabled = true;
 }
 
 function hideLoading() {
     document.getElementById("loading").style.display = "none";
+    document.getElementById("send-button").disabled = false;
 }
 
 // 透過後端回應控制系統燈號，並確保初始狀態為開啟

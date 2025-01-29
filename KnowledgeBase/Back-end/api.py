@@ -16,6 +16,9 @@ class QuestionRequest(BaseModel):
 async def ask_question(request: QuestionRequest):
     """處理前端的問答請求，透過 FAISS 檢索匹配最相關的回應"""
 
+    # 記錄請求內容
+    print(f"🔹 [API] 收到請求: {request.question}, Top-K: {request.top_k}, Temp: {request.temperature}")
+
     # 產生查詢向量
     question_vector = np.array([llm_handler.embed_text(request.question)])
 
