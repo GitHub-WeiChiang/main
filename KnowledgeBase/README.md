@@ -27,26 +27,26 @@ Screenshots
 <table style="border-collapse: collapse; border: 1px solid black;">
     <tr>
         <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/1.png" />
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/screenshot1.png" />
         </td>
         <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/2.png" />
-        </td>
-    </tr>
-    <tr>
-        <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/3.png" />
-        </td>
-        <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/4.png" />
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/screenshot2.png" />
         </td>
     </tr>
     <tr>
         <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/5.png" />
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/screenshot3.png" />
         </td>
         <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/6.png" />
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/screenshot4.png" />
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 5px;background-color:#fff;">
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/screenshot5.png" />
+        </td>
+        <td style="padding: 5px;background-color:#fff;">
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/screenshot6.png" />
         </td>
     </tr>
 </table>
