@@ -47,7 +47,7 @@ class RAGDatabase:
         documents = loader.load()
 
         # 分割文本為 chunk
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
         split_docs = text_splitter.split_documents(documents)
 
         # **確保每個 chunk 都有 metadata**
