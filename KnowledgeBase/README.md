@@ -29,7 +29,12 @@ docker run --name pgvector -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 pgvecto
 ```
 cd Back-end
 
+# Base on Python 3.11.7
+python3 -m venv venv
+
 source venv/bin/activate
+
+pip install -r requirements.txt
 
 python main.py
 ```
