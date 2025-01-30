@@ -11,15 +11,46 @@ Schedule
 * ### Day 4: 20250130
     - [x] Back-end: Retrieval Augmented Generation
 * ### Day 5: 20250131
-    - [ ] Done: Other concluding matters
+    - [x] Done: Other concluding matters
+<br />
+
+QuickStart
+-----
+```
+ollama pull nomic-embed-text
+
+ollama run gemma2:2b
+```
+```
+docker pull pgvector/pgvector:pg17
+
+docker run --name pgvector -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 pgvector/pgvector:pg17
+```
+```
+cd Back-end
+
+source venv/bin/activate
+
+python main.py
+```
 <br />
 
 Flowchart
 -----
-* ### 問答系統流程圖 (會實作)
-    ![image](https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/%E5%95%8F%E7%AD%94%E7%B3%BB%E7%B5%B1%E6%B5%81%E7%A8%8B%E5%9C%96.png)
-* ### 知識庫構建流程圖 (不實作)
-    ![image](https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/%E7%9F%A5%E8%AD%98%E5%BA%AB%E6%A7%8B%E5%BB%BA%E6%B5%81%E7%A8%8B%E5%9C%96.png)
+<table style="border-collapse: collapse; border: 1px solid black;">
+    <tr>
+        <th>問答系統流程圖 (會實作)</th>
+        <th>知識庫構建流程圖 (不實作)</th>
+    </tr>
+    <tr>
+        <td style="padding: 5px;background-color:#fff;">
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/%E5%95%8F%E7%AD%94%E7%B3%BB%E7%B5%B1%E6%B5%81%E7%A8%8B%E5%9C%96.png" />
+        </td>
+        <td style="padding: 5px;background-color:#fff;">
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/KnowledgeBase/%E7%9F%A5%E8%AD%98%E5%BA%AB%E6%A7%8B%E5%BB%BA%E6%B5%81%E7%A8%8B%E5%9C%96.png" />
+        </td>
+    </tr>
+</table>
 <br />
 
 Screenshots
