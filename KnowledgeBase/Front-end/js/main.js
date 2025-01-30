@@ -61,8 +61,8 @@ async function sendMessage() {
 
         let data = await response.json();
 
-        // 來源標籤顯示在訊息框下方
-        addMessage(data.answer, "bot-message", data.source);
+        // 確保後端回傳的數據包含 RAG 的來源資訊
+        addMessage(data.answer, "bot-message", data.source, data.doc_names, data.doc_chunks);
 
         // 檢查後端是否回應系統狀態
         if (data.answer.includes("系統已關閉")) {
@@ -78,10 +78,10 @@ async function sendMessage() {
     }
 }
 
-function addMessage(text, className, source = "") {
+function addMessage(text, className, source = "", docNames = [], docChunks = []) {
     let chatBox = document.getElementById("chat-box");
 
-    // 建立外層容器，讓訊息與來源標籤獨立
+    // 建立外層容器
     let messageContainer = document.createElement("div");
     messageContainer.classList.add("message-container");
 
@@ -92,17 +92,49 @@ function addMessage(text, className, source = "") {
 
     messageContainer.appendChild(messageDiv);
 
-    // 建立來源標籤（顯示在下方）
+    // 建立來源標籤
     if (source) {
-        let sourceTag = document.createElement("div");
+        let sourceTag = document.createElement("span");
         sourceTag.classList.add("source-label", `source-${source.toLowerCase()}`);
         sourceTag.innerText = `來源: ${source}`;
+
+        // 只有 RAG 來源可點擊，顯示命中的文件 & chunk
+        if (source === "RAG" && docNames.length > 0 && docChunks.length > 0) {
+            sourceTag.classList.add("clickable");
+            sourceTag.addEventListener("click", function () {
+                displayRAGInfo(docNames, docChunks);
+            });
+        }
+
         messageContainer.appendChild(sourceTag);
     }
 
     chatBox.appendChild(messageContainer);
     chatBox.scrollTop = chatBox.scrollHeight;
 }
+
+// 顯示 RAG 命中資訊
+function displayRAGInfo(docNames, docChunks) {
+    let ragInfo = document.getElementById("rag-info");
+
+    // 清空舊資料
+    document.getElementById("rag-doc-name").innerHTML = "";
+    document.getElementById("rag-doc-chunk").innerHTML = "";
+
+    // 顯示所有匹配的文件與 chunk
+    let docText = `<strong>📄 文件:</strong> ${docNames.join(", ")}`;
+    let chunkText = docChunks.map((chunk, i) => `<p><strong>🔹 Chunk ${i + 1}:</strong> ${chunk}</p>`).join("");
+
+    document.getElementById("rag-doc-name").innerHTML = docText;
+    document.getElementById("rag-doc-chunk").innerHTML = chunkText;
+
+    ragInfo.classList.remove("hidden");
+}
+
+// 關閉 RAG 命中資訊
+document.getElementById("close-rag-info").addEventListener("click", function () {
+    document.getElementById("rag-info").classList.add("hidden");
+});
 
 function showLoading() {
     document.getElementById("loading").style.display = "block";
@@ -114,7 +146,7 @@ function hideLoading() {
     document.getElementById("send-button").disabled = false;
 }
 
-// 透過後端回應控制系統燈號，並確保初始狀態為開啟
+// 透過後端回應控制系統燈號
 function updateSystemStatus(isOn) {
     let light = document.getElementById("status-light");
     let text = document.getElementById("status-text");

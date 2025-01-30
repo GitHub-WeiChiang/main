@@ -18,6 +18,15 @@
             <div id="loading" class="loading-indicator">載入中...</div>
         </div>
 
+        <!-- RAG 命中資訊 -->
+        <div id="rag-info" class="rag-info hidden">
+            <h5>命中文件：</h5>
+            <p id="rag-doc-name"></p>
+            <h5>命中內容：</h5>
+            <p id="rag-doc-chunk"></p>
+            <button id="close-rag-info" class="btn btn-secondary btn-sm">關閉</button>
+        </div>
+
         <!-- 使用者輸入 -->
         <div class="input-group mb-3">
             <input type="text" id="user-input" class="form-control" placeholder="輸入你的問題">

@@ -76,6 +76,17 @@
     font-weight: bold;
 }
 
+/* 可點擊的來源標籤 (RAG) */
+.clickable {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #d9534f; /* RAG 標籤顏色 */
+}
+
+.clickable:hover {
+    color: #b52b27;
+}
+
 /* 來源顏色設定 */
 .source-rag {
     color: #d9534f;
@@ -140,4 +151,30 @@
 .status-off {
     background: #dc3545;
     box-shadow: 0 0 15px rgba(220, 53, 69, 0.8);
+}
+
+/* RAG 命中資訊顯示區塊 */
+.rag-info {
+    background: #fff3cd;
+    border: 1px solid #ffecb5;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+}
+
+.rag-info h5 {
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.rag-info p {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* 隱藏區塊 */
+.hidden {
+    display: none;
 }
