@@ -6,8 +6,8 @@ Contents
     * ### HybridCacheRAG -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/HybridCacheRAG)
     * ### LangChainRAG -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/LangChainRAG)
     * ### SimpleRAG -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/SimpleRAG)
-    * ### DataScience -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/DataScience)
     * ### MaxKB -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/MaxKB)
+    * ### DataScience -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/DataScience)
 * ### 程式語言
     * ### Python -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/Python)
     * ### Java -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/Java)
