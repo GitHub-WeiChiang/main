@@ -2,7 +2,7 @@ Contents
 =====
 * ### 人工智慧
     * ### FuncCallRAG -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/FuncCallRAG)
-    * ### CacheRAG -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/CacheRAG)
+    * ### HybridCacheRAG -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/HybridCacheRAG)
     * ### LangChainRAG -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/LangChainRAG)
     * ### SimpleRAG -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/SimpleRAG)
     * ### DataScience -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/DataScience)
