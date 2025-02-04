@@ -7,9 +7,9 @@ Schedule
 * ### Day 2: 20250128
     - [x] Front-end: Web
 * ### Day 3: 20250129
-    - [x] Back-end: Cache Augmented Generation
+    - [x] Back-end: Cache
 * ### Day 4: 20250130
-    - [x] Back-end: Retrieval Augmented Generation
+    - [x] Back-end: RAG
 * ### Day 5: 20250131
     - [x] Done: Other concluding matters
 <br />
