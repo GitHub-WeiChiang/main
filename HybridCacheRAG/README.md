@@ -40,17 +40,6 @@ python main.py
 ```
 <br />
 
-System Architecture Diagram
------
-<table style="border-collapse: collapse; border: 1px solid black;">
-    <tr>
-        <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/HybridCacheRAG/RagCagSAD.jpg" />
-        </td>
-    </tr>
-</table>
-<br />
-
 Flowchart
 -----
 <table style="border-collapse: collapse; border: 1px solid black;">
