@@ -1,7 +1,7 @@
 import ollama
 
 class LLMHandler:
-    def __init__(self, model_name="gemma:2b"):
+    def __init__(self, model_name="gemma2:9b"):
         self.model_name = model_name
 
     def generate_response(self, prompt, temperature=0.7):

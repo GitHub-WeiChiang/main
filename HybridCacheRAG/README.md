@@ -19,7 +19,7 @@ QuickStart
 ```
 ollama pull nomic-embed-text
 
-ollama run gemma2:2b
+ollama pull gemma2:9b
 ```
 ```
 docker pull pgvector/pgvector:pg17
