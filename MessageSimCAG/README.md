@@ -1,4 +1,4 @@
-LangChainCAGSimKV
+MessageSimCAG
 =====
 QuickStart
 -----
@@ -27,7 +27,7 @@ Flowchart
     </tr>
     <tr>
         <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/LangChainCAGSimKV/RAGvsCAG_CacheAugmentedGeneration.jpg" />
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/MessageSimCAG/RAGvsCAG_CacheAugmentedGeneration.jpg" />
         </td>
     </tr>
 </table>

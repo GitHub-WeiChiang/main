@@ -1,4 +1,4 @@
-HybridCacheRAG
+CacheRAG
 =====
 Schedule
 -----
@@ -49,10 +49,10 @@ Flowchart
     </tr>
     <tr>
         <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/HybridCacheRAG/%E5%95%8F%E7%AD%94%E7%B3%BB%E7%B5%B1%E6%B5%81%E7%A8%8B%E5%9C%96.png" />
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/CacheRAG/%E5%95%8F%E7%AD%94%E7%B3%BB%E7%B5%B1%E6%B5%81%E7%A8%8B%E5%9C%96.png" />
         </td>
         <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/HybridCacheRAG/%E7%9F%A5%E8%AD%98%E5%BA%AB%E6%A7%8B%E5%BB%BA%E6%B5%81%E7%A8%8B%E5%9C%96.png" />
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/CacheRAG/%E7%9F%A5%E8%AD%98%E5%BA%AB%E6%A7%8B%E5%BB%BA%E6%B5%81%E7%A8%8B%E5%9C%96.png" />
         </td>
     </tr>
 </table>
@@ -63,26 +63,26 @@ Screenshots
 <table style="border-collapse: collapse; border: 1px solid black;">
     <tr>
         <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/HybridCacheRAG/screenshot1.png" />
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/CacheRAG/screenshot1.png" />
         </td>
         <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/HybridCacheRAG/screenshot2.png" />
-        </td>
-    </tr>
-    <tr>
-        <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/HybridCacheRAG/screenshot3.png" />
-        </td>
-        <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/HybridCacheRAG/screenshot4.png" />
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/CacheRAG/screenshot2.png" />
         </td>
     </tr>
     <tr>
         <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/HybridCacheRAG/screenshot5.png" />
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/CacheRAG/screenshot3.png" />
         </td>
         <td style="padding: 5px;background-color:#fff;">
-            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/HybridCacheRAG/screenshot6.png" />
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/CacheRAG/screenshot4.png" />
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 5px;background-color:#fff;">
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/CacheRAG/screenshot5.png" />
+        </td>
+        <td style="padding: 5px;background-color:#fff;">
+            <img src= "https://raw.githubusercontent.com/GitHub-WeiChiang/main/refs/heads/master/CacheRAG/screenshot6.png" />
         </td>
     </tr>
 </table>
