@@ -1,8 +1,8 @@
 Contents
 =====
 * ### 人工智慧
-    * ### *LangChainAgent* -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/LangChainAgent)
-    * ### *Prompt2Action* -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/Prompt2Action)
+    * ### LangChainAgent -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/LangChainAgent)
+    * ### Prompt2Action -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/Prompt2Action)
     * ### *SimpleCAG* -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/SimpleCAG)
     * ### LangChainSimulationCAG -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/LangChainSimulationCAG)
     * ### CacheRAG -> [click me](https://github.com/GitHub-WeiChiang/main/tree/master/CacheRAG)
