@@ -53,6 +53,7 @@ Questions
 * ### Question051 - 如何將 Microsoft Word 中的自動編號轉換成純文字 ? [click me](https://github.com/GitHub-WeiChiang/main/tree/master/Questions/Question051)
 * ### Question052 - 遇到問題 error: externally-managed-environment 要如何解決 ? [click me](https://github.com/GitHub-WeiChiang/main/tree/master/Questions/Question052)
 * ### Question053 - Nginx 有哪些功能與特性 ? [click me](https://github.com/GitHub-WeiChiang/main/tree/master/Questions/Question053)
+* ### Question054 - PyCharm 中的 Too broad exception clause 好煩好煩怎麼辦 ? [click me](https://github.com/GitHub-WeiChiang/main/tree/master/Questions/Question054)
 <br />
 
 Reference
