@@ -45,16 +45,10 @@ Mind on Patterns
 
 Application of Design Patterns
 =====
-* ### Django Web Framework
-    * ### Fluent Interface
-        * ### QuerySet
-* ### FastAPI Web Framework
-    * ### Decorator
-        * ### @app.route 路由映射
-        * ### Depends 依賴注入
-    * ### Chain Of Responsibility
-        * ### @app.middleware 中間件
-* ### 整合網管
+* ### 智能助理 (LLM + RAG + Agent)
+    * ### Template Method
+        * ### 知識庫檔案處理管道
+* ### 網管系統
     * ### Builder
         * ### Cisco IOS 命令構建
     * ### Command
@@ -98,4 +92,17 @@ Application of Design Patterns
         * ### 隨機碼生成器
     * ### DAO
         * ### 關聯資料庫存取
+<br />
+
+Design Patterns in Web Framework
+=====
+* ### Django 
+    * ### Fluent Interface
+        * ### QuerySet
+* ### FastAPI
+    * ### Decorator
+        * ### @app.route 路由映射
+        * ### Depends 依賴注入
+    * ### Chain Of Responsibility
+        * ### @app.middleware 中間件
 <br />
