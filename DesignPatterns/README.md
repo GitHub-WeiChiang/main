@@ -45,7 +45,7 @@ Mind on Patterns
 
 Application of Design Patterns
 =====
-* ### 智能助理 (LLM + RAG + Agent)
+* ### 智能助理 (LLM + RAG + LangChain Agent + LangGraph)
     * ### State
         * ### LangGraph 工作流程
     * ### Template Method
