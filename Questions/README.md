@@ -54,6 +54,7 @@ Questions
 * ### Question052 - 遇到問題 error: externally-managed-environment 要如何解決 ? [click me](https://github.com/GitHub-WeiChiang/main/tree/master/Questions/Question052)
 * ### Question053 - Nginx 有哪些功能與特性 ? [click me](https://github.com/GitHub-WeiChiang/main/tree/master/Questions/Question053)
 * ### Question054 - PyCharm 中的 Too broad exception clause 好煩好煩怎麼辦 ? [click me](https://github.com/GitHub-WeiChiang/main/tree/master/Questions/Question054)
+* ### Question055 - 如何解決 Python 中的 Circular Import 問題 ? [click me](https://github.com/GitHub-WeiChiang/main/tree/master/Questions/Question055)
 <br />
 
 Reference

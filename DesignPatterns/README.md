@@ -46,8 +46,15 @@ Mind on Patterns
 Application of Design Patterns
 =====
 * ### 智能助理 (LLM + RAG + Agent)
+    * ### State
+        * ### LangGraph 工作流程
     * ### Template Method
         * ### 知識庫檔案處理管道
+    * ### Singleton
+        * ### 代理生成
+        * ### LLM 通信器
+        * ### 知識庫檔案處理管道
+        * ### 組態管理
 * ### 網管系統
     * ### Builder
         * ### Cisco IOS 命令構建
