@@ -51,8 +51,10 @@ Application of Design Patterns
     * ### Template Method
         * ### 知識庫檔案處理管道
     * ### Singleton
+        * ### LangGraph 工作流程
         * ### 代理生成
-        * ### LLM 通信器
+        * ### PGVector Handler
+        * ### LLM Handler
         * ### 知識庫檔案處理管道
         * ### 組態管理
 * ### 網管系統
