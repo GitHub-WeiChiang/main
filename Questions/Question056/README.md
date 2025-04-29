@@ -19,4 +19,22 @@ Question056 - Docker Container Port 小複習: 如何映射與相互連接 ?
     docker network connect NETWORK_NAME CONTAINER_NAME
     ```
 * ### 在 Docker Compose 中，當兩個容器要互相通信時，它們之間是透過「容器內部的網路」互連的，不會使用到主機的對應 port，在容器之間通信時，會直接使用「容器內部的 port」。
+* ### Docker Compose 相關指令
+    * ### Attached Mode (前景執行)
+        ```
+        docker-compose -p app up --build
+
+        -p app: 指定專案名稱為 app。
+        up: 啟動服務 (若需要會自動建構 Image 與 Container 並啟動)。
+        --build: 啟動前會先重新建構 Image（就算之前已經建構過）。
+        ```
+    * ### Detached Mode (背景執行)
+        ```
+        docker-compose -p app up --build -d
+
+        -p app: 指定專案名稱為 app。
+        up: 啟動服務 (若需要會自動建構 Image 與 Container 並啟動)。
+        --build: 啟動前會先重新建構 Image（就算之前已經建構過）。
+        -d: 分離模式。
+        ```
 <br />

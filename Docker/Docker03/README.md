@@ -64,4 +64,22 @@ Docker03 什么是 Docker Compose ?
     
     $ docker-compose down # Stops your containers, and also removes the stopped containers as well as any networks that were created.
     ```
+* ### 其它相關指令
+    * ### Attached Mode (前景執行)
+        ```
+        docker-compose -p app up --build
+
+        -p app: 指定專案名稱為 app。
+        up: 啟動服務 (若需要會自動建構 Image 與 Container 並啟動)。
+        --build: 啟動前會先重新建構 Image（就算之前已經建構過）。
+        ```
+    * ### Detached Mode (背景執行)
+        ```
+        docker-compose -p app up --build -d
+
+        -p app: 指定專案名稱為 app。
+        up: 啟動服務 (若需要會自動建構 Image 與 Container 並啟動)。
+        --build: 啟動前會先重新建構 Image（就算之前已經建構過）。
+        -d: 分離模式。
+        ```
 <br />

@@ -47,11 +47,10 @@ Application of Design Patterns
 =====
 * ### 智能助理 (LLM + RAG + LangChain Agent + LangGraph)
     * ### State
-        * ### LangGraph 工作流程
+        * ### LangGraph 工作流
     * ### Template Method
         * ### 知識庫檔案處理管道
     * ### Singleton
-        * ### LangGraph 工作流程
         * ### 代理生成
         * ### PGVector Handler
         * ### LLM Handler
