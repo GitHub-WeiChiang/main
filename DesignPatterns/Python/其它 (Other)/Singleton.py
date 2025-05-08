@@ -4,6 +4,7 @@ __date__ = "2022/04/25"
 # Import threading module.
 import threading
 
+
 # # Create singleton class with a decorator
 # def singleton(cls, *args, **kwargs):
 #     instance = None
@@ -15,6 +16,7 @@ import threading
 #         return instance
 
 #     return __singleton
+
 
 # Create singleton class with a decorator
 # Singleton Decorator.
@@ -41,14 +43,19 @@ def singleton(cls):
 
     # Return inner function.
     return __singleton
-   
+
+
 @singleton
 class Singleton:
     pass
 
+
 SingletonA = Singleton()
 SingletonB = Singleton()
+
 print(SingletonA)
 print(SingletonB)
+
 print(SingletonA == SingletonB)
+
 print(type(Singleton()))
