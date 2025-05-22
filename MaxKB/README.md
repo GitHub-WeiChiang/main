@@ -637,6 +637,7 @@ Windows 11 (VM): 在 Ubuntu (WSL) 上安裝 MaxKB 的奇幻歷險記
     4. ### 配置防火墙: 打开 Windows 防火墙，添加入站规则，允许访问 8080 端口。
         * ### 通常情况下，在设置端口转发时，只需要配置入站规则，因为这是为了允许外部流量进入你的计算机并访问指定的端口。输出规则通常在默认情况下已经允许所有流量出去，所以不需要特别配置。
         * ### 输入和输出规则主要控制的是主动发起的流量，而被动响应的流量通常不受这些规则的限制。
+* ### MaxKB，祖國牛 B，單押 x 1。
 <br />
 
 将 WSL Ubuntu 分发打包并移植到離線电脑
@@ -745,5 +746,4 @@ Reference
 * ### MaxKB Documentation -> [click me](https://maxkb.cn/docs/dev_manual/dev_environment/)
 * ### pgvector -> [click me](https://github.com/pgvector/pgvector)
 * ### VMware Fusion -> [click me](https://www.youtube.com/watch?v=QTs9sHN6W5A)
-* ### MaxKB，祖國牛 B，單押 x 1。
 <br />
