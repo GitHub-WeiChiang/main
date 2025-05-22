@@ -745,4 +745,5 @@ Reference
 * ### MaxKB Documentation -> [click me](https://maxkb.cn/docs/dev_manual/dev_environment/)
 * ### pgvector -> [click me](https://github.com/pgvector/pgvector)
 * ### VMware Fusion -> [click me](https://www.youtube.com/watch?v=QTs9sHN6W5A)
+* ### MaxKB，祖國牛 B，單押 x 1。
 <br />
