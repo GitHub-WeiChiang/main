@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAG Chat</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container vh-100 d-flex flex-column">
+        <h2 class="text-center my-3">CAG Chat</h2>
+        <div id="chat-box" class="flex-grow-1 border rounded p-3 overflow-auto bg-light">
+            <!-- 用來顯示回覆的區域 -->
+        </div>
+        <div class="input-group my-3">
+            <input type="text" id="user-input" class="form-control" placeholder="輸入訊息...">
+            <button id="send-btn" class="btn btn-primary">發送</button>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>

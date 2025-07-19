@@ -1,0 +1,951 @@
+SELECT
+    object_name,
+    object_type,
+    status
+FROM USER_OBJECTS
+ORDER BY 2;
+
+SELECT
+    username,
+    account_status,
+    expiry_date,
+    default_tablespace
+FROM dba_users;
+
+ALTER USER OE ACCOUNT LOCK;
+
+ALTER USER OE PASSWORD EXPIRE;
+
+CREATE USER OLIVER IDENTIFIED BY 0123456;
+GRANT CONNECT, RESOURCEA TO OLIVER;
+GRANT CREATE SESSION TO OLIVER WITH ADMIN OPTION;
+GRANT UNLIMITED TABLESPACE TO OLIVER;
+GRANT SELECT ON HR.EMPLOYEES TO OLIVER; 
+
+REVOKE ALL
+ON rders
+FROM HR;
+
+GRANT SELECT, INSERT
+ON orders
+TO hr WITH GRANT OPTION;
+
+GRANT SELECT ON CUSTOMERS TO HR;
+
+GRANT CONNECT, RESOURCE, DBA TO ROSE;
+
+GRANT CREATE SESSION TO OSCAR, ROSE;
+
+UPDATE students s
+SET
+    s.stu_address.street_address = 'xxx',
+    s.stu_address.postal_code = 'xxx'
+WHERE student_id = 'xxx';
+
+SELECT
+    student_id,
+    stu_name,gender,
+    s.stu_address.city,
+    s.stu_address.district,
+    s.stu_address.street_address,
+    phone_number
+FROM STUDENTS s
+ORDER BY 1;
+
+INSERT INTO students (
+    student_id,
+    stu_name,
+    gender,
+    STU_ADDRESS,
+    phone_number
+)
+VALUES (
+    'xxx',
+    'xxx',
+    'xxx',
+    HR.STU_ADDRESS_TYP('xxx','xxx','xxx','xxx','xxx'),
+    'xxx'
+);
+
+CREATE TABLE STUDENTS(
+    STUDENT_ID CHAR(10) CONSTRAINT STU_PK PRIMARY KEY,
+    STU_NAME VARCHAR2(20) NOT NULL,
+    GENDER CHAR(4),
+    STU_ADDRESS STU_ADDRESS_TYP,
+    PHONE_NUMBER VARCHAR2(30)
+);
+
+CREATE OR REPLACE TYPE "STU_ADDRESS_TYP" AS OBJECT(
+    STREET_ADDRESS VARCHAR2(50),
+    POSTAL_CODE VARCHAR2(10),
+    CITY VARCHAR2(30),
+    DISTRICT VARCHAR2(10),
+    COUNTRY_ID CHAR(3)
+);
+
+SELECT
+    customer_id,
+    cust_last_name || cust_first_name,
+    c.cust_address.postal_code,
+    c.cust_address.street_address
+FROM customers c
+WHERE customer_id < 111;
+
+DESCRIBE CUST_ADDRESS_TYP;
+
+DROP INDEX PRODUCT_NAME_IDX;
+
+CREATE INDEX PRODUCT_NAME_IDX
+ON PRODUCT_INFORMATION (PRODUCT_NAME);
+
+CREATE OR REPLACE VIEW CLERK_VU AS
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_ID, JOB_ID, SALARY
+FROM EMPS
+WHERE JOB_ID LIKE '%CLERK';
+WITH CHECK OPTION;
+
+UPDATE CLERK_VU
+SET JOB_ID = 'PU_MAN'
+WHERE EMPLOYEE_ID = 125;
+
+SELECT *
+FROM CLERK_VU;
+
+CREATE OR REPLACE VIEW CLERK_VU AS
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_ID, JOB_ID, SALARY
+FROM EMPS
+WHERE JOB_ID LIKE '%CLERK';
+
+CREATE TABLE EMPS AS
+SELECT *
+FROM EMPLOYEES;
+
+SELECT employee_seq.CURRVAL
+FROM DUAL;
+
+SELECT employee_seq.NEXTVAL
+FROM DUAL;
+
+CREATE SEQUENCE employee_seq
+START WITH 100
+INCREMENT BY 1
+NOCACHE
+NOCYCLE;
+
+FLASHBACK TABLE T1 TO RESTORE POINT DATA_107;
+
+DROP RESTORE POINT DATA_107;
+
+CREATE RESTORE POINT DATA_107;
+
+GRANT FLASHBACK ANY TABLE TO HR;
+
+flashback table t1 to scn 2966409;
+
+select dbms_flashback.get_system_change_number from dual;
+
+FLASHBACK TABLE HR.T1 TO TIMESTAMP SYSTIMESTAMP-INTERVAL '10' SECOND;
+
+FLASHBACK TABLE emps TO BEFORE DROP;
+
+PURGE RECYCLEBIN;
+
+SELECT *
+FROM RECYCLEBIN;
+
+SELECT *
+FROM USER_RECYCLEBIN;
+
+ALTER TABLE EMPS MODIFY JOB_ID VARCHAR2(40);
+
+CREATE TABLE ORD_ITEM(
+    ORD_NO NUMBER(2),
+    ITEM_NO NUMBER(3),
+    RTY NUMBER(3) CHECK (QTY BETWEEN 100 AND 200),
+    EXPIRY_DATE DATE CHECK (EXPIRY_DATE > SYSDATE),
+    CONSTRAINT IP_PK PRIMARY KEY (ORD_NO, ITEM_NO),
+    CONSTRAINT ORD_FK FOREIGN KEY (ORD_NO) REFERENCES ORDER(ORD_NO)
+);
+
+CREATE TABLE ORDER(
+    ORD_NO NUMBER(2) CONSTRAINT ORD_PK PRIMARY KEY,
+    ORD_DATE DATE,
+    CUST_ID NUMBER(4)
+);
+
+CREATE TABLE emps(
+    emp_id NUMBER(4) PRIMARY KEY,
+    emp_name VARCHAR2(30) NOT NULL,
+    job_id VARCHAR2(20),
+    salary NUMBER(6),
+    hire_date DATE DEFAULT SYSDATE,
+    mgr_id NUMBER(4) REFERENCES emps,
+    dept_id NUMBER(3) REFERENCES depts(dept_id)
+);
+
+CREATE TABLE depts(
+    dept_id NUMBER(3) PRIMARY KEY,
+    dept_name VARCHAR2(20) UNIQUE,
+    city VARCHAR2(20) NOT NULL
+);
+
+CREATE TABLE EMPS(
+    EMP_ID NUMBER(4),
+    FIRST_NAME VARCHAR2(25) NOT NULL,
+    LAST_NAME VARCHAR2(25) NOT NULL,
+    DEPARTMENT_ID NUMBER(2),
+    HIRE_DATE DATE DEFAULT SYSDATE,
+    JOB_ID VARCHAR2(10), NOT NULL,
+    SALARY NUMBER(6),
+    STATUS NVARCHAR2(5) DEFAULT '任職中',
+    RESUME CLOB,
+    CONSTRAINT EMPS_EMP_ID_PK PRIMARY KEY(EMP_ID)
+);
+
+CREATE TABLE EMPS(
+    EMP_ID NUMBER(4) CONSTRAINT EMPS_EMP_ID_PK PRIMARY KEY,
+    FIRST_NAME VARCHAR2(25) NOT NULL,
+    LAST_NAME VARCHAR2(25) NOT NULL,
+    DEPARTMENT_ID NUMBER(2),
+    HIRE_DATE DATE DEFAULT SYSDATE,
+    JOB_ID VARCHAR2(10), NOT NULL,
+    SALARY NUMBER(6),
+    STATUS NVARCHAR2(5) DEFAULT '任職中',
+    RESUME CLOB
+);
+
+CREATE TABLE EMPS
+AS
+SELECT *
+FROM EMPLOYEES;
+
+DROP TABLE EMPS;
+
+CREATE TABLE EMPS(
+    EMP_ID NUMBER,
+    EMP_NAME VARCHAR2(25),
+    HIRE_DATE DATE,
+    EMP_STATUS VARCHAR2(10), DEFAULT 'ACTIVE',
+    RESUME CLOB
+);
+
+UPDATE employees
+SET (job_id, salary) = (
+    select job_id, salary
+    from employees
+    where employee_id = 100
+)
+WHERE employee_id = 999;
+
+UPDATE employees
+SET job_id = (
+        select job_id 
+        from employees
+        where employee_id = 100
+    ),
+    salary = (
+        select salary
+        from employees    
+        where employee_id = 100
+    )
+WHERE employee_id = 999;
+
+UPDATE departments
+SET manager_id = 200
+WHERE department_id = 999;
+
+INSERT INTO emps (employee_id, last_name, email, job_id, hire_date) 
+SELECT employee_id, last_name, email, job_id, hire_date
+FROM employees
+WHERE employee_id > 200;
+
+DROP TABLE emps;
+
+CREATE TABLE emps
+AS
+SELECT *
+FROM employees
+WHERE employee_id > 9999;
+
+INSERT INTO employees
+VALUES (
+    999,
+    '丞晞',
+    '辜',
+    'albert0425369@gmail.com',
+    '02.12345678',
+    TO_DATE('29-07-2021', 'DD-MM-YYYY'),
+    'SA_MAN',
+    30000,
+    NULL,
+    100,
+    30
+);
+
+INSERT INTO departments (department_id, department_name)
+VALUES (999, 'Public Relation');
+
+SELECT REGEXP_SUBSTR(
+    'http://www.abc123.com/products',
+    'http://([[:alnum:]]+\.?){3,4}/?')
+FROM DUAL;
+
+SELECT REGEXP_SUBSTR(
+    '新北市, 新莊區, 中正路 510 號, 電話 (02)2905-2000',
+    ',[^,]+',
+    1,
+    3
+)
+FROM DUAL;
+
+SELECT street_address
+FROM locations
+WHERE REGEXP_INSTR(street_address, '[^[:alpha:]]') = 1;
+
+SELECT
+    employee_id,
+    last_name,
+    REGEXP_REPLACE(
+        phone_number,
+        '([[:digit:]]{3})\.([[:digit:]]{3})\.([[:digit:]]{4})',
+        '(\1) \2-\3'
+    )
+FROM employees
+WHERE department_id in (20, 30);
+
+SELECT first_name, last_name
+FROM employees
+WHERE REGEXP_LIKE(first_name, '^Ste(v|ph)en$');
+
+SELECT 'TRUE'
+FROM dual
+WHERE REGEXP_LIKE('Alex', '[^Ale|ax.r$]');
+
+WITH A AS (
+    select department_id, count(*)
+    from employees
+    group by department_id
+    order by 1
+),
+B AS (
+    SELECT department_id
+    FROM A
+    MINUS
+    SELECT department_id
+    FROM employees
+    WHERE manager_id is null
+)
+SELECT d.department_id, d.department_name, d.manager_id, e.last_name, e.first_name
+FROM departments d JOIN employees e
+ON (d.department_id = e.department_id)
+WHERE d.department_id in (
+    SELECT department_id
+    FROM B
+) 
+AND (e.employee_id = d.manager_id);
+
+WITH A AS (
+    SELECT employee_id
+    FROM employees
+    MINUS
+    SELECT DISTINCT employee_id
+    FROM job_history
+    ORDER BY 1
+)
+SELECT employee_id, department_id, last_name, job_id
+FROM employees
+WHERE employee_id in (
+    SELECT employee_id
+    FROM A
+);
+
+SELECT location_id, city
+FROM locations
+INTERSECT
+SELECT location_id, city
+FROM locations JOIN departments USING(location_id);
+
+SELECT employee_id, last_name, job_id
+FROM employees
+INTERSECT
+SELECT employee_id, e.last_name, j.job_id
+FROM job_history j JOIN employees e Using (employee_id);
+
+SELECT 2 COL1, 'Y' COL2
+FROM DUAL
+UNION
+SELECT 1, 'X'
+FROM DUAL
+UNION
+SELECT 3, NULL
+FROM DUAL
+ORDER BY 2;
+
+SELECT EMPLOYEE_ID
+FROM EMPLOYEES
+WHERE JOB_ID = 'SA_MAN'
+UNION
+SELECT EMPLOYEE_ID
+FROM JOB_HISTORY
+WHERE JOB_ID = 'SA_MAN';
+
+SELECT EMPLOYEE_ID, DEPARTMENT_ID
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID = 50
+ORDER BY DEPARTMENT_ID
+UNION
+SELECT EMPLOYEE_ID, DEPARTMENT_ID
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID = 90
+UNION
+SELECT EMPLOYEE_ID, DEPARTMENT_ID
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID = 10;
+
+SELECT employee_id, job_id, hire_date, TO_DATE(null), department_id
+FROM employees
+UNION ALL
+SELECT employee_id, job_id, start_date, end_date, department_id
+FROM job_history
+ORDER BY 1, 3 DESC;
+
+SELECT employee_id, job_id, hire_date, TO_DATE(null)
+FROM employees 
+UNION
+SELECT employee_id, job_id, start_date, end_date
+FROM job_history
+ORDER BY 1, 3 DESC;
+
+SELECT employee_id, job_id
+FROM employees
+UNION
+SELECT employee_id, job_id
+FROM job_history;
+
+WITH
+    A AS (
+        SELECT department_id, ROUND(AVG(salary)) avg_sal
+        FROM employees
+        GROUP BY department_id
+        ORDER BY 1
+    ),
+    B AS (
+        SELECT department_id, employee_id, last_name || first_name name, salary
+        FROM employees
+        ORDER BY 1
+    )
+SELECT a.department_id, b.employee_id, b.name, b.salary, a.avg_sal
+FROM A JOIN B ON (a.department_id = b.department_id) AND (b.salary > a.avg_sal);
+
+SELECT DEPARTMENT_ID, DEPARTMENT_NAME
+FROM DEPARTMENTS D
+WHERE EXISTS (
+    SELECT *
+    FROM EMPLOYEES
+    WHERE DEPARTMENT_ID = D.DEPARTMENT_ID
+)
+ORDER BY DEPARTMENT_ID;
+
+SELECT department_id, employee_id, last_name || first_name, salary
+FROM employees e
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employees
+    WHERE department_id = e.department_id
+)
+ORDER BY department_id;
+
+SELECT LAST_NAME, SALARY
+FROM EMPLOYEES
+WHERE SALARY > ALL (
+    SELECT DISTINCT SALARY
+    FROM EMPLOYEES
+    WHERE JOB_ID = 'IT_PROG'
+);
+
+SELECT FIRST_NAME, SALARY
+FROM EMPLOYEES
+WHERE MANAGER_ID = (
+    SELECT MANAGER_ID
+    FROM EMPLOYEES
+    WHERE FIRST_NAME = 'Neena'
+) AND SALARY >= (
+    SELECT SALARY
+    FROM EMPLOYEES
+    WHERE FIRST_NAME = 'Neena'
+) AND FIRST_NAME <> 'Neena';
+
+SELECT EMPLOYEE_ID, FIRST_NAME, DEPARTMENT_ID
+FROM EMPLOYEES
+WHERE (MANAGER_ID, DEPARTMENT_ID) = (
+    SELECT MANAGER_ID, DEPARTMENT_ID
+    FROM EMPLOYEES
+    WHERE EMPLOYEE_ID = 104
+) AND EMPLOYEE_ID <> 104;
+
+SELECT 
+    DECODE(grouping(department_name), 1, '全體部門', department_name),
+    DECODE(grouping(job_id), 1, '所有職務', job_id),
+    COUNT(*),
+    TO_CHAR(avg(salary), '999,999')
+FROM employees e, departments d
+WHERE 
+    d.department_id = e.department_id
+    AND
+    d.department_id in (20, 30)
+GROUP BY ROLLUP (department_name, job_id)
+ORDER BY 1, 2;
+
+SELECT
+    decode(
+        GROUPING(department_id),
+        1, '全體部門合計',
+        0, department_id
+    ),
+    to_char(SUM(salary), '999,999')
+FROM employees
+GROUP BY ROLLUP(department_id)
+ORDER BY department_id;
+
+SELECT department_id, job_id, manager_id, SUM(salary)
+FROM employees
+WHERE department_id in (20, 30) 
+GROUP BY GROUPING SETS(
+    (department_id, job_id),
+    (job_id, manager_id)
+)
+ORDER BY department_id, manager_id, job_id;
+
+SELECT department_id, job_id, SUM(salary)
+FROM employees
+WHERE department_id in(20, 30)
+GROUP BY CUBE(department_id, job_id)
+ORDER BY department_id;
+
+SELECT department_id, SUM(salary)
+FROM employees
+GROUP BY CUBE(department_id)
+ORDER BY department_id;
+
+SELECT department_id, job_id, SUM(salary)
+FROM employees
+GROUP BY ROLLUP(department_id, job_id)
+ORDER BY department_id, job_id;
+
+SELECT department_id, SUM(salary)
+FROM employees
+GROUP BY ROLLUP(department_id)
+ORDER BY department_id;
+
+SELECT
+    department_id,
+    TO_CHAR(MAX(salary), '99,999'),
+    TO_CHAR(MIN(salary), '99,999'),
+    TO_CHAR(AVG(salary), '99,999.9'),
+    TO_CHAR(MEDIAN(salary), '99,999.9'),
+    TO_CHAR(STDDEV(salary), '99,999.9'),
+    TO_CHAR(VARIANCE(salary), '999,999,999.9')
+FROM employees
+GROUP BY department_id;
+
+SELECT
+    employee_id,
+    department_id,
+    hire_date,
+    FIRST_VALUE(hire_date) OVER (
+        PARTITION BY department_id
+        ORDER BY hire_date
+    ),
+    hire_date - FIRST_VALUE(hire_date) OVER (
+        PARTITION BY department_id
+        ORDER BY hire_date
+    )
+FROM employees
+WHERE department_id IN (20, 30)
+ORDER BY 2, 5;
+
+SELECT
+    department_id,
+    employee_id,
+    salary,
+    LEAD(salary, 1, 0) OVER (
+        PARTITION BY department_id
+        ORDER BY salary
+        DESC NULLS LAST
+    ),
+    LAG(salary, 1, 0) OVER (
+        PARTITION BY department_id
+        ORDER BY salary
+        DESC NULLS LAST
+    )
+FROM employees
+WHERE department_id IN (20, 30)
+ORDER BY 1, 3 DESC;
+
+SELECT
+    employee_id,
+    department_id,
+    salary,
+    RANK() OVER (
+        PARTITION BY department_id
+        ORDER BY salary DESC NULLS LAST
+    ) RANK,
+    DENSE_RANK() OVER (
+        PARTITION BY department_id
+        ORDER BY salary DESC NULLS LAST
+    ) DENSE_RANK
+FROM employees
+WHERE department_id in(30,50)
+ORDER BY 2, RANK;
+
+SELECT
+    DEPARTMENT_ID,
+    EMPLOYEE_ID,
+    TO_CHAR(HIRE_DATE, 'yyyy-mm-dd'),
+    ROW_NUMBER() OVER (
+        PARTITION BY DEPARTMENT_ID
+        ORDER BY HIRE_DATE
+    )
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID IN (20, 30)
+ORDER BY 1, 3;
+
+SELECT DEPARTMENT_ID, EMPLOYEE_ID, COUNT(*) OVER (PARTITION BY DEPARTMENT_ID)
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID IN (20, 30);
+
+SELECT DEPARTMENT_ID, COUNT(*) OVER ()
+FROM DEPARTMENTS;
+
+SELECT DEPARTMENT_ID, JOB_ID, SUM(SALARY)
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID > 30
+GROUP BY DEPARTMENT_ID, JOB_ID
+ORDER BY DEPARTMENT_ID;
+
+SELECT SUM(SALARY)
+FROM EMPLOYEES;
+
+SELECT MIN(HIRE_DATE)
+FROM EMPLOYEES;
+
+SELECT MAX(SALARY)
+FROM EMPLOYEES;
+
+SELECT COUNT(DISTINCT COMMISSION_PCT)
+FROM EMPLOYEES;
+
+SELECT COUNT(COMMISSION_PCT)
+FROM EMPLOYEES;
+
+SELECT COUNT(*)
+FROM EMPLOYEES;
+
+SELECT ROUND(AVG(DISTINCT SALARY))
+FROM EMPLOYEES;
+
+SELECT ROUND(AVG(SALARY))
+FROM EMPLOYEES;
+
+SELECT DEPARTMENT_ID, ROUND(AVG(SALARY), 1)
+FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID
+ORDER BY AVG(SALARY) DESC;
+
+SELECT D.DEPARTMENT_ID, D.DEPARTMENT_NAME, L.LOCATION_ID, L.CITY
+FROM DEPARTMENTS D
+RIGHT OUTER JOIN LOCATIONS L
+ON D.LOCATION_ID = L.LOCATION_ID;
+
+SELECT E.LAST_NAME, E.DEPARTMENT_ID, D.DEPARTMENT_NAME
+FROM EMPLOYEES E
+FULL OUTER JOIN DEPARTMENTS D
+ON E.DEPARTMENT_ID = D.DEPARTMENT_ID;
+
+SELECT E.LAST_NAME, E.DEPARTMENT_ID, D.DEPARTMENT_NAME
+FROM EMPLOYEES E
+RIGHT OUTER JOIN DEPARTMENTS D
+ON E.DEPARTMENT_ID = D.DEPARTMENT_ID;
+
+SELECT E.LAST_NAME, E.DEPARTMENT_ID, D.DEPARTMENT_NAME
+FROM EMPLOYEES E
+LEFT OUTER JOIN DEPARTMENTS D
+ON E.DEPARTMENT_ID = D.DEPARTMENT_ID;
+
+SELECT E.FIRST_NAME||' ' ||E.LAST_NAME, M.FIRST_NAME||' '||M.LAST_NAME
+FROM EMPLOYEES E JOIN EMPLOYEES M
+ON (E.MANAGER_ID = M.EMPLOYEE_ID);
+
+SELECT EMPLOYEE_ID, LAST_NAME, D.DEPARTMENT_NAME, L.CITY
+FROM EMPLOYEES E
+JOIN DEPARTMENTS D USING (DEPARTMENT_ID)
+JOIN LOCATIONS L USING (LOCATION_ID)
+
+SELECT E.EMPLOYEE_ID, E.LAST_NAME, DEPARTMENT_ID, D.DEPARTMENT_NAME
+FROM EMPLOYEES E
+JOIN DEPARTMENTS D USING(DEPARTMENT_ID);
+
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_NAME
+FROM EMPLOYEES
+NATURAL JOIN DEPARTMENTS;
+
+SELECT TO_DSINTERVAL('31 23:59:59.1234')
+FROM DUAL;
+
+SELECT TO_YMINTERVAL('2-3')
+FROM DUAL;
+
+SELECT TO_TIMESTAMP_TZ('2021-04-14 11:25:10', 'YYYY-MM-DD HH24:MI:SS')
+FROM DUAL;
+
+SELECT TO_TIMESTAMP('2021-04-14 11:25:10:1234', 'YYYY-MM-DD HH24:MI:SS:FF')
+FROM DUAL;
+
+SELECT 
+    EMPLOYEE_ID,
+    LAST_NAME,
+    JOB_ID,
+    SALARY,
+    DECODE(
+        JOB_ID,
+        'SAL_REP', SALARY * 1.2,
+        'IT_PROG', SALARY * 1.15,
+        'ST_CLERK', SALARY * 1.1,
+        SALARY * 1.05
+    )
+FROM EMPLOYEES;
+
+SELECT
+    EMPLOYEE_ID,
+    LAST_NAME,
+    JOB_ID,
+    SALARY,
+    CASE JOB_ID 
+        WHEN 'SAL_REP' THEN SALARY * 1.2
+        WHEN 'SAL_REP' THEN SALARY * 1.2
+        WHEN 'IT_PROG' THEN SALARY * 1.15
+        WHEN 'ST_CLERK' THEN SALARY * 1.1
+        ELSE SALARY * 1.05
+    END
+FROM EMPLOYEES;
+
+SELECT
+    LAST_NAME,
+    EMPLOYEE_ID,
+    COALESCE(TO_CHAR(COMMISSION_PCT), TO_CHAR(MANAGER_ID))
+FROM EMPLOYEES;
+
+SELECT
+    FIRST_NAME,
+    LENGTH(FIRST_NAME),
+    LAST_NAME, LENGTH(LAST_NAME),
+    NULLIF(LENGTH(FIRST_NAME), LENGTH(LAST_NAME))
+FROM EMPLOYEES;
+
+SELECT
+    LAST_NAME,
+    SALARY,
+    COMMISSION_PCT,
+    SALARY * (1 + NVL2(COMMISSION_PCT, COMMISSION_PCT, 0)) * 12
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID IN (50, 80);
+
+SELECT
+    LAST_NAME,
+    SALARY,
+    NVL(COMMISSION_PCT, 0),
+    SALARY * (1 + NVL(COMMISSION_PCT, 0)) * 12
+FROM EMPLOYEES;
+
+SELECT EMPLOYEE_ID, LAST_NAME, TO_CHAR(SALARY, '$99,999')
+FROM EMPLOYEES;
+
+SELECT EMPLOYEE_ID, FIRST_NAME, NEXT_DAY(ADD_MONTHS(HIRE_DATE, 6), 2)
+FROM EMPLOYEES;
+
+SELECT SYSDATE + 12 / 24
+FROM DUAL;
+
+SELECT FIRST_NAME, SYSDATE - HIRE_DATE
+FROM EMPLOYEES;
+
+SELECT SYSDATE - 3
+FROM DUAL;
+
+SELECT SYSDATE + 7
+FROM DUAL;
+
+SELECT LAST_DAY('20-SEP-22')
+FROM DUAL;
+
+SELECT NEXT_DAY('27-JUL-14', 'SUNDAY')
+FROM DUAL;
+
+SELECT NEXT_DAY('27-JUL-14', 1)
+FROM DUAL;
+
+SELECT ADD_MONTHS('31-DEC-13', 10)
+FROM DUAL;
+
+SELECT NUMTODSINTERVAL(25, 'HOUR'),
+NUMTODSINTERVAL(25.4, 'HOUR'),
+NUMTODSINTERVAL(25.9, 'HOUR')
+FROM DUAL;
+
+SELECT NUMTOYMINTERVAL(11, 'MONTH'),
+NUMTOYMINTERVAL(11.4, 'MONTH'),
+NUMTOYMINTERVAL(11.5, 'MONTH')
+FROM DUAL;
+
+SELECT MONTHS_BETWEEN('31-OCT-14', '31-DEC-13')
+FROM DUAL;
+
+SELECT SYSDATE
+FROM DUAL;
+
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID
+FROM EMPLOYEES
+WHERE SOUNDEX(FIRST_NAME) = SOUNDEX('DEN');
+
+SELECT REPLACE('JACK AND JUE', 'J', 'BL')
+FROM DUAL;
+
+SELECT TRIM(LEADING 'H' FROM 'HOW ARE YOU DOING ?')
+FROM DUAL;
+
+SELECT RPAD(123.456, 10, '*')
+FROM DUAL;
+
+SELECT LPAD(123.456, 10, '*')
+FROM DUAL;
+
+SELECT INSTR('HELLO', 'E', 1)
+FROM DUAL;
+
+SELECT LENGTH('HELLO')
+FROM DUAL;
+
+SELECT SUBSTR('HELLO, HOW ARE YOU DOING ?', 1, 5)
+FROM DUAL;
+
+SELECT CONCAT('HELLO', 'HOW ARE YOU?')
+FROM DUAL;
+
+SELECT INITCAP ('hello')
+FROM DUAL;
+
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME
+FROM EMPLOYEES
+WHERE UPPER(LAST_NAME) = 'ROGERS';
+
+SELECT UPPER('hello')
+FROM DUAL;
+
+SELECT LOWER('HELLO')
+FROM DUAL;
+
+SELECT REMAINDER(11, 3)
+FROM DUAL;
+
+SELECT MOD(11, 3)
+FROM DUAL;
+
+SELECT FLOOR(2.2345)
+FROM DUAL;
+
+SELECT CEIL(2.2345)
+FROM DUAL;
+
+SELECT TRUNC(12.345, 2)
+FROM DUAL;
+
+SELECT ROUND(12.345, 2)
+FROM DUAL;
+
+SELECT FIRST_NAME, LENGTH(FIRST_NAME)
+FROM EMPLOYEES;
+
+SELECT employee_id
+FROM EMPLOYEES
+ORDER BY SALARY DESC
+FETCH NEXT 1 PERCENT ROWS ONLY;
+
+SELECT EMPLOYEE_ID
+FROM EMPLOYEES
+ORDER BY SALARY DESC
+FETCH FIRST 3 ROWS ONLY;
+
+SELECT *
+FROM (
+    SELECT EMPLOYEE_ID, FIRST_NAME, DEPARTMENT_ID, (SYSDATE - HIRE_DATE) / 365
+    FROM EMPLOYEES
+    ORDER BY 4 DESC
+)
+WHERE ROWNUM <= 6;
+
+SELECT FIRST_NAME, DEPARTMENT_ID, SALARY
+FROM EMPLOYEES
+ORDER BY DEPARTMENT_ID, FIRST_NAME, SALARY DESC;
+
+SELECT LAST_NAME, SALARY, HIRE_DATE
+FROM EMPLOYEES
+WHERE SALARY >= 3000
+ORDER BY 2, 3 DESC;
+
+SELECT DEPARTMENT_ID, EMPLOYEE_ID, LAST_NAME, FIRST_NAME, JOB_ID, SALARY
+FROM EMPLOYEES
+WHERE JOB_ID LIKE '%MAN'
+    AND DEPARTMENT_ID = &DEPARTMENT_ID
+    AND SALARY > &SALARY;
+
+SELECT EMPLOYEE_ID, LAST_NAME, JOB_ID
+FROM EMPLOYEES
+WHERE JOB_ID LIKE '%SA\_%' ESCAPE '\';
+
+SELECT EMPLOYEE_ID, FIRST_NAME, SALARY, JOB_ID
+FROM EMPLOYEES
+WHERE (JOB_ID LIKE '%MAN' OR JOB_ID LIKE '%CLERK')
+    AND DEPARTMENT_ID = 30
+    AND SALARY > 3000;
+
+SELECT FIRST_NAME, LAST_NAME, MANAGER_ID, DEPARTMENT_ID, HIRE_DATE
+FROM EMPLOYEES
+WHERE MANAGER_ID IN (101, 104) AND DEPARTMENT_ID IN (100, 110);
+
+SELECT FIRST_NAME, LAST_NAME, SALARY, DEPARTMENT_ID, HIRE_DATE
+FROM EMPLOYEES
+WHERE SALARY BETWEEN 11000 AND 12000;
+
+SELECT FIRST_NAME, LAST_NAME, SALARY, DEPARTMENT_ID, HIRE_DATE
+FROM EMPLOYEES
+WHERE SALARY >= 24000;
+
+SELECT FIRST_NAME, LAST_NAME, DEPARTMENT_ID
+FROM EMPLOYEES
+WHERE HIRE_DATE = '17-JUN-03';
+
+SELECT 'JOHN IS''NT WORK IN THE DEPARTMENT'
+FROM DUAL;
+
+SELECT FIRST_NAME, SALARY, SALARY * 12 + SALARY * 12 * 0.05
+FROM EMPLOYEES;
+
+SELECT LAST_NAME, DEPARTMENT_ID, (SALARY + 50) * 12
+FROM EMPLOYEES
+WHERE MONTHS_BETWEEN(SYSDATE, HIRE_DATE) / 12 >= 5;
+
+SELECT LAST_NAME, DEPARTMENT_NAME
+FROM EMPLOYEES
+NATURAL JOIN DEPARTMENTS;
+
+SELECT *
+FROM EMPLOYEES
+WHERE EMPLOYEE_ID = 100;
+
+SELECT EMPLOYEE_ID, LAST_NAME, SALARY
+FROM EMPLOYEES;
+
+SELECT FIRST_NAME, LAST_NAME, HIRE_DATE, SALARY
+FROM EMPLOYEES;
+
+ALTER SESSION SET NLS_LANGUAGE = AMERICAN;

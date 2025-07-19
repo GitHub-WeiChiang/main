@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>問答系統</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>問答系統</h2>
+
+        <!-- 聊天視窗 -->
+        <div id="chat-box-container">
+            <div id="chat-box" class="mb-3"></div>
+            <div id="loading" class="loading-indicator">載入中...</div>
+        </div>
+
+        <!-- RAG 命中資訊 -->
+        <div id="rag-info" class="rag-info hidden">
+            <h5>命中文件：</h5>
+            <p id="rag-doc-name"></p>
+            <h5>命中內容：</h5>
+            <p id="rag-doc-chunk"></p>
+            <button id="close-rag-info" class="btn btn-secondary btn-sm">關閉</button>
+        </div>
+
+        <!-- 使用者輸入 -->
+        <div class="input-group mb-3">
+            <input type="text" id="user-input" class="form-control" placeholder="輸入你的問題">
+            <button id="send-button" class="btn btn-primary">發送</button>
+        </div>
+
+        <!-- 燈號顯示 -->
+        <div class="status-indicator">
+            <span>系統狀態：</span>
+            <span id="status-light" class="status-light status-on"></span> <!-- 預設為綠色「運行中」 -->
+            <span id="status-text">運行中</span> <!-- 預設文字 -->
+        </div>
+
+        <!-- 控制面板 -->
+        <div class="control-panel">
+            <h5 class="mb-3">參數設定</h5>
+
+            <div class="card p-3 mb-3">
+                <label for="top-k" class="form-label">Top-K：</label>
+                <input type="number" id="top-k" class="form-control" value="5" min="1" max="100">
+            </div>
+
+            <div class="card p-3">
+                <label for="temperature" class="form-label">Temperature：</label>
+                <input type="range" id="temperature" class="form-range" min="0" max="1" step="0.1" value="0.7">
+                <span id="temp-value" class="badge bg-secondary px-3 py-2">0.7</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

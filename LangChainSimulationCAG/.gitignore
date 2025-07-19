@@ -1,0 +1,19 @@
+# 忽略 Python 虛擬環境
+venv/
+.env
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# 忽略 IDE 相關檔案
+.vscode/
+.idea/
+*.iml
+
+# 忽略環境變數與設定檔
+.env
+*.log
