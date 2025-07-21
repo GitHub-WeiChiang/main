@@ -9,7 +9,7 @@ class RAGTool:
         self.__retrieval_records = list()
 
     def __get_func(self):
-        def run_basic_retriever(query: str = "") -> str:
+        def run_basic_retriever(query: str="") -> str:
             """
             這個工具會透過向量檢索的方式查詢指定知識庫的相關內容，
             並將匹配到的資訊與用戶問題傳送給此工具內部的 LLM 進行答覆，

@@ -4,7 +4,7 @@ from langchain.tools import tool
 
 class CommonTool:
     @staticmethod
-    def get_current_time(query: str = "") -> str:
+    def get_current_time(query: str="") -> str:
         """
         這個工具用於查詢即時的日期與時間資訊，
         適用於用戶想了解當前的日期與時間之場景。

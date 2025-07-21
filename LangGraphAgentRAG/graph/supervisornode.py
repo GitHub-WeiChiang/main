@@ -7,7 +7,6 @@ from langchain.prompts import AIMessagePromptTemplate
 
 from config import config
 
-
 class SupervisorNode:
     __OLLAMA_LLM = OllamaLLM(
         model=config.LLM_MODEL,
