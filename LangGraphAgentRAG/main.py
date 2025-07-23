@@ -7,6 +7,7 @@ from fastapi.responses import FileResponse
 
 from config import config
 from router import chatapi
+from router import fakeapi
 from rag.kbfilepipeline import kb_file_pipeline
 
 app = FastAPIOffline(
@@ -29,6 +30,7 @@ def index():
     return FileResponse("static/index.html")
 
 app.include_router(chatapi.router, prefix=config.API_PREFIX)
+app.include_router(fakeapi.router, prefix=config.API_PREFIX)
 
 kb_file_pipeline.run()
 
