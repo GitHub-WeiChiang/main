@@ -20,7 +20,7 @@ class LLMHandler:
         self.__MESSAGES = [
             SystemMessagePromptTemplate.from_template("您是一位智能助理，協助用戶解決所遇到的問題。"),
             HumanMessagePromptTemplate.from_template("已知資訊：\n{data}\n\n\n用戶問題：\n{question}"),
-            AIMessagePromptTemplate.from_template("若有需要，請根據已知資訊提供準確的答覆；若無法回答，請誠實告知用戶。")
+            AIMessagePromptTemplate.from_template("若有需要，請根據已知資訊提供準確的答覆；若無法回答，請誠實告知用戶。"),
         ]
 
     def generate_response(self, retrieve_chunks, question, chat_histories=None):

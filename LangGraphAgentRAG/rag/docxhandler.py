@@ -1,5 +1,4 @@
 import os
-import hashlib
 import pandas as pd
 
 from docx import Document
@@ -9,15 +8,18 @@ from docx.oxml.text.paragraph import CT_P
 from docx.text.paragraph import Paragraph
 from docx.oxml.table import CT_Tbl
 from docx.table import Table
-from pybloom_live import BloomFilter
 from pathlib import Path
 
 from config import config
+from rag.hashhandler import hash_handler
 
 class DocxHandler:
     @classmethod
     def load_docx_file(cls, file_path):
         cat, fil = Path(file_path).parts[-2:]
+
+        cat = hash_handler.gen_hash_name(cat)
+        fil = hash_handler.gen_hash_name(fil)
 
         imgs_dir = str(os.path.join(config.IMGS_ROOT_OS, cat, fil))
 
@@ -55,8 +57,6 @@ class DocxHandler:
     def __proc_drawing(cls, paragraph, document, imgs_dir, cat, fil):
         texts = list()
 
-        bloom_filter = BloomFilter(capacity=100000, error_rate=0.001)
-
         for run in paragraph.runs:
             drawing_elements = run._element.xpath(".//a:blip")
 
@@ -67,7 +67,7 @@ class DocxHandler:
 
                 img_part = document.part.related_parts[r_id]
                 img_bytes = img_part.blob
-                img_hash = cls.__get_hash(bloom_filter, img_bytes)
+                img_hash = hash_handler.gen_img_hash_name(img_bytes)
                 img_ext = guess_extension(img_part.content_type) or ".png"
                 img_name = f"{img_hash}{img_ext}"
                 img_path = os.path.join(imgs_dir, img_name)
@@ -100,16 +100,3 @@ class DocxHandler:
         ) if len(normalized_data) > 1 else pd.DataFrame(normalized_data)
 
         return data_frame.to_markdown(index=False)
-
-    @staticmethod
-    def __get_hash(bloom_filter, img_bytes):
-        img_hash = hashlib.md5(img_bytes).hexdigest()[:6]
-
-        while img_hash in bloom_filter:
-            img_hash = hashlib.md5(
-                (img_hash + config.BF_SALT).encode()
-            ).hexdigest()[:6]
-
-        bloom_filter.add(img_hash)
-
-        return img_hash

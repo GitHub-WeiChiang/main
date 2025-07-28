@@ -22,12 +22,12 @@ class RAGTool:
             :rtype: str
 
             :適用場景:
-                - 用戶針對特定領域知識的提問。
+                - 用戶針對特定領域知識的提問，主要包含公司行政業務相關資訊。
 
             :輸入範例:
-                - 攝影機沒有畫面如何排查
-                - 空調故障怎麼辦
-                - 有哪些行車安全規範
+                - 如何申請 xxx
+                - 怎麼申辦 xxx
+                - 如何申請 xxx
             """
 
             retrieved_results = Retriever.search(self.__category, query)

@@ -36,4 +36,16 @@ class Config:
         self.BF_SALT = "SALT"
         self.SPLIT_TAG = "-->"
 
+        self.CSCO_T_SW_CONN_INFO = ("xxx.xxx.xxx.xxx", 22, 'admin', 'Aa123456')
+
+        self.REMOTE_CTRL_COMMAND_INTERVAL_TIME = 1
+        self.SSH_TIMEOUT = 5
+
+        self.MAX_CHAT_HISTORY_MESSAGES = 4
+
+        self.AGENT_MAX_ITER = 2
+        self.AGENT_STOP_METHOD = "generate"
+
+        self.HASH_NAME_LEN = 5
+
 config = Config()

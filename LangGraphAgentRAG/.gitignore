@@ -47,6 +47,7 @@ docs/_build/
 #doc/
 #!doc/rag_params.yaml
 *.docx
+!測試專用.docx
 
 # Image
 static/imgs

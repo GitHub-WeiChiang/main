@@ -6,7 +6,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from colorama import Fore, Style
 
 from config import config
-from rag.imagehandler import ImageHandler
+from rag.imgfolderhandler import ImgFolderHandler
 from rag.docxhandler import DocxHandler
 from rag.pgvectorhandler import pg_vector_handler
 
@@ -57,11 +57,11 @@ class KBFilePipeline:
                         continue
 
                     pg_vector_handler.del_file(category, file)
-                    ImageHandler.remove_img_folder(category, file)
+                    ImgFolderHandler.remove_folder(category, file)
 
                     print("⚠️ [KBFilePipeline] " + Fore.BLUE + f"文件 '{file}' 已存在但有更新，將刪除現有版本，稍後存入更新版。" + Style.RESET_ALL)
 
-                ImageHandler.create_img_folder(category, file)
+                ImgFolderHandler.create_folder(category, file)
 
                 documents = DocxHandler.load_docx_file(file_path)
 

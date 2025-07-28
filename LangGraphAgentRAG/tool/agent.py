@@ -21,22 +21,32 @@ class Agent:
         ]
 
     def gen_single_tool_agent(self, tool):
-        return initialize_agent(
+        agent_executor =  initialize_agent(
             tools=[tool],
             llm=self.__OLLAMA_LLM,
             agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
             verbose=True
         )
 
+        agent_executor.max_iterations = config.AGENT_MAX_ITER
+        agent_executor.early_stopping_method = config.AGENT_STOP_METHOD
+
+        return agent_executor
+
     def gen_multi_tool_agent(self, extra_tool=None):
         tools = self.get_default_tools() if extra_tool is None else self.get_default_tools() + extra_tool.get_tools()
 
-        return initialize_agent(
+        agent_executor =  initialize_agent(
             tools=tools,
             llm=self.__OLLAMA_LLM,
             agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
             verbose=True
         )
+
+        agent_executor.max_iterations = config.AGENT_MAX_ITER
+        agent_executor.early_stopping_method = config.AGENT_STOP_METHOD
+
+        return agent_executor
 
     def get_default_tools(self):
         return self.__DEFAULT_TOOLS
