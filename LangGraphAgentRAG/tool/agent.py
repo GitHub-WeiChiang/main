@@ -20,9 +20,9 @@ class Agent:
             *NMSTool.get_tools(),
         ]
 
-    def gen_single_tool_agent(self, tool):
+    def gen_custom_agent(self, *tools):
         agent_executor =  initialize_agent(
-            tools=[tool],
+            tools=[*tools],
             llm=self.__OLLAMA_LLM,
             agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
             verbose=True
@@ -33,7 +33,7 @@ class Agent:
 
         return agent_executor
 
-    def gen_multi_tool_agent(self, extra_tool=None):
+    def gen_default_agent(self, extra_tool=None):
         tools = self.get_default_tools() if extra_tool is None else self.get_default_tools() + extra_tool.get_tools()
 
         agent_executor =  initialize_agent(

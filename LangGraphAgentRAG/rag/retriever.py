@@ -8,24 +8,20 @@ class Retriever:
 
         category_params = config.RAG_PARAMS.get(category, config.RAG_PARAMS["DEFAULT"])
 
-        retriever = config.PG_VECTOR.as_retriever(
-            search_type="similarity_score_threshold",
-            search_kwargs={
-                "k": category_params["TOP_K"],
-                "score_threshold": category_params["SCORE_THRESHOLD"],
-                "filter": {"category": category}}
+        documents = config.PG_VECTOR.similarity_search_with_score(
+            context, k=category_params["TOP_K"], filter={"category": category}
         )
-        documents = retriever.invoke(context)
 
         results = list()
 
-        for document in documents:
+        for document, score in documents:
             results.append({
                 "category": document.metadata.get("category"),
                 "file": document.metadata.get("file"),
                 "index": document.metadata.get("index"),
                 "mtime": document.metadata.get("mtime"),
-                "content": document.page_content
+                "content": document.page_content,
+                "similarity": round(1 - score, 2)
             })
 
         return results

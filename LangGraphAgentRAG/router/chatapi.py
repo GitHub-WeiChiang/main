@@ -37,7 +37,7 @@ def talk_rag(request: Request):
         "retrieved_results": retrieved_results
     }, status_code=200)
 
-@router.post("/talk/agent")
+@router.post("/talk/agent", deprecated=True)
 def talk_agent(request: Request):
     print(f"🤖 [ChatAPI][/talk/agent] 收到請求 {request}")
 
@@ -45,7 +45,7 @@ def talk_agent(request: Request):
 
     messages = ChatHistoryHandler.generate_message(request.chat_histories, request.question)
 
-    answer = agent.gen_multi_tool_agent(rag_tool).invoke(messages)["output"]
+    answer = agent.gen_default_agent(rag_tool).invoke(messages)["output"]
 
     return JSONResponse(content={
         "answer": answer,

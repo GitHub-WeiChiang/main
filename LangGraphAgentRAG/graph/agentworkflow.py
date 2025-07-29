@@ -24,7 +24,7 @@ class AgentWorkflow:
         for tool in tools:
             node = functools.partial(
                 AgentWorkflow.__generate_agent_node,
-                agent_instance=agent.gen_single_tool_agent(tool),
+                agent_instance=agent.gen_custom_agent(tool),
                 agent_name=tool.name,
                 chat_histories=chat_histories
             )

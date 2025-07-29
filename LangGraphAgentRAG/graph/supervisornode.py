@@ -50,6 +50,7 @@ class SupervisorNode:
             is_employee_present
             open_port
             close_port
+            set_description
             run_basic_retriever
             FINISH
             """
