@@ -9,9 +9,10 @@ class ChatHistoryHandler:
     def generate_message(chat_histories, question=None):
         messages = list()
 
-        messages.append(SystemMessage(content="請盡可能的呈現圖片與表格。"))
+        messages.append(SystemMessage(content="請儘量呈現圖片與表格。"))
         messages.append(SystemMessage(content="請以 Markdown 格式字串呈現圖片與表格。"))
         messages.append(SystemMessage(content="請勿修改 Markdown 圖片格式的網址。"))
+        messages.append(SystemMessage(content="請完整且詳盡的答覆。"))
 
         if chat_histories is None:
             return messages

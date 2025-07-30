@@ -20,7 +20,7 @@ class Agent:
             *NMSTool.get_tools(),
         ]
 
-    def gen_custom_agent(self, *tools):
+    def gen_custom_agent(self, *tools, max_iterations=config.AGENT_MAX_ITER):
         agent_executor =  initialize_agent(
             tools=[*tools],
             llm=self.__OLLAMA_LLM,
@@ -28,12 +28,12 @@ class Agent:
             verbose=True
         )
 
-        agent_executor.max_iterations = config.AGENT_MAX_ITER
+        agent_executor.max_iterations = max_iterations
         agent_executor.early_stopping_method = config.AGENT_STOP_METHOD
 
         return agent_executor
 
-    def gen_default_agent(self, extra_tool=None):
+    def gen_default_agent(self, extra_tool=None, max_iterations=config.AGENT_MAX_ITER):
         tools = self.get_default_tools() if extra_tool is None else self.get_default_tools() + extra_tool.get_tools()
 
         agent_executor =  initialize_agent(
@@ -43,7 +43,7 @@ class Agent:
             verbose=True
         )
 
-        agent_executor.max_iterations = config.AGENT_MAX_ITER
+        agent_executor.max_iterations = max_iterations
         agent_executor.early_stopping_method = config.AGENT_STOP_METHOD
 
         return agent_executor
