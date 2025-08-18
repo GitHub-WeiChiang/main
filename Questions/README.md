@@ -56,6 +56,7 @@ Questions
 * ### Question054 - PyCharm 中的 Too broad exception clause 好煩好煩怎麼辦 ? [click me](https://github.com/GitHub-WeiChiang/main/tree/main/Questions/Question054)
 * ### Question055 - 如何解決 Python 中的 Circular Import 問題 ? [click me](https://github.com/GitHub-WeiChiang/main/tree/main/Questions/Question055)
 * ### Question056 - Docker Container Port 小複習: 如何映射與相互連接 ? [click me](https://github.com/GitHub-WeiChiang/main/tree/main/Questions/Question056)
+* ### Question057 - Ollama 中 Gemma3 模型版本與量化比較差異 ? [click me](https://github.com/GitHub-WeiChiang/main/tree/main/Questions/Question057)
 <br />
 
 Reference
