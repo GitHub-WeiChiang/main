@@ -34,6 +34,11 @@ pip install torch
 pip install onnxruntime
 
 pip install pydub
+
+pip install -U openai-whisper
+```
+```
+pip freeze > requirements.txt
 ```
 ```
 brew install ffmpeg
