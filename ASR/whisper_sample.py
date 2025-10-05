@@ -1,5 +1,32 @@
 import whisper
 
+from typing import List, Dict
+
+def format_timestamp(seconds: float) -> str:
+    # 把秒數轉成 mm:ss.mmm 格式
+
+    # 把秒轉成毫秒
+    ms = int(round(seconds * 1000))
+
+    # 把毫秒分成 "秒" 與 "剩餘毫秒"。
+    s, ms = divmod(ms, 1000)
+    # 把秒數分成 "分鐘" 與 "剩餘秒"。
+    m, s = divmod(s, 60)
+
+    # 格式化輸出
+    return f"{m:02d}:{s:02d}.{ms:03d}"
+
+def write_transcript_with_timestamps(segments: List[Dict], output_dir: str) -> None:
+     # 把 segments 寫成帶時間戳的 txt 且每行一個 segment
+    with open(output_dir, "w", encoding="utf-8") as f:
+        for seg in segments:
+            start = format_timestamp(seg["start"])
+            end = format_timestamp(seg["end"])
+
+            text = seg.get("text", "").strip()
+            
+            f.write(f"[{start} --> {end}] {text}\n")
+
 def main(
         audio_path: str,
         output_dir: str,
@@ -25,12 +52,20 @@ def main(
         condition_on_previous_text=False,
     )
 
-    # 取得轉錄結果
-    result_text = result["text"]
+    # 取得轉錄結果中的 segments
+    segments = result.get("segments")
 
-    # 輸出文字檔
-    with open(output_dir, "w", encoding="utf-8") as f:
-        f.write(result_text)
+    # 若有 segments 輸出帶時間戳的文字檔
+    if segments:
+        write_transcript_with_timestamps(segments, output_dir)
+    # 否則退回寫純 text
+    else:
+        # 取得轉錄結果
+        result_text = result["text"]
+
+        # 輸出文字檔
+        with open(output_dir, "w", encoding="utf-8") as f:
+            f.write(result_text)
 
 if __name__ == "__main__":
     prompt = "討論主題: 有關於飛彈的攔截率"
