@@ -2,9 +2,8 @@ import whisper
 
 from typing import List, Dict
 
+# 把秒數轉成 mm:ss.mmm 格式
 def format_timestamp(seconds: float) -> str:
-    # 把秒數轉成 mm:ss.mmm 格式
-
     # 把秒轉成毫秒
     ms = int(round(seconds * 1000))
 
@@ -16,8 +15,8 @@ def format_timestamp(seconds: float) -> str:
     # 格式化輸出
     return f"{m:02d}:{s:02d}.{ms:03d}"
 
+# 把 segments 寫成帶時間戳的 txt 且每行一個 segment
 def write_transcript_with_timestamps(segments: List[Dict], output_dir: str) -> None:
-     # 把 segments 寫成帶時間戳的 txt 且每行一個 segment
     with open(output_dir, "w", encoding="utf-8") as f:
         for seg in segments:
             start = format_timestamp(seg["start"])
