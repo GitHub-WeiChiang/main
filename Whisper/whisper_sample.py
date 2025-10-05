@@ -34,7 +34,7 @@ def main(
         model_size: str = "large"
 ):
     # 檢查模型大小是否在允許清單內
-    if model_size not in ["small", "medium", "large"]:
+    if model_size not in ["tiny", "base", "small", "medium", "large"]:
         raise ValueError("model_size must be one of ['small', 'medium', 'large']")
     
     # 載入對應尺寸的 Whisper 模型

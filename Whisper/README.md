@@ -12,6 +12,16 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 ```
+brew install ffmpeg
+```
+```
+python convert_audio.py
+
+python whisper_load_model.py
+
+python whisper_sample.py
+```
+```
 deactivate
 ```
 <br />
