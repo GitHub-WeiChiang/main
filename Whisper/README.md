@@ -1,4 +1,4 @@
-ASR
+Whisper
 =====
 QuickStart
 -----
@@ -36,6 +36,8 @@ pip install onnxruntime
 pip install pydub
 
 pip install -U openai-whisper
+
+pip install omegaconf
 ```
 ```
 pip freeze > requirements.txt

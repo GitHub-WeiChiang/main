@@ -1,7 +1,7 @@
 Contents
 =====
 * ### 人工智慧
-    * ### ASR -> [click me](https://github.com/GitHub-WeiChiang/main/tree/main/ASR)
+    * ### Whisper -> [click me](https://github.com/GitHub-WeiChiang/main/tree/main/Whisper)
     * ### LangGraphAgentRAG -> [click me](https://github.com/GitHub-WeiChiang/main/tree/main/LangGraphAgentRAG)
     * ### LangChainAgent -> [click me](https://github.com/GitHub-WeiChiang/main/tree/main/LangChainAgent)
     * ### Prompt2Action -> [click me](https://github.com/GitHub-WeiChiang/main/tree/main/Prompt2Action)
