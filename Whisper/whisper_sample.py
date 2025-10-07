@@ -1,3 +1,4 @@
+import os
 import whisper
 
 from typing import List, Dict
@@ -67,6 +68,10 @@ def main(
             f.write(result_text)
 
 if __name__ == "__main__":
+    os.makedirs("./model", exist_ok=True)
+    
+    os.environ["XDG_CACHE_HOME"] = "./model"
+
     prompt = "討論主題: 有關於飛彈的攔截率"
 
     main("./audio/test_audio.wav", "./transcript/whisper.txt", prompt)
