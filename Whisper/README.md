@@ -20,6 +20,8 @@ python convert_audio.py
 python whisper_load_model.py
 
 python whisper_sample.py
+
+python convert_audio.py
 ```
 ```
 deactivate
