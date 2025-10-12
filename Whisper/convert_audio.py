@@ -64,3 +64,10 @@ if __name__ == "__main__":
     convert_to_wav(mp3_path_2, wav_path_2)
 
     print(f'Converted "{mp3_path_2}" to "{wav_path_2}".')
+
+    mp3_path_3 = "./audio/test_audio_3.mp3"
+    wav_path_3 = "./audio/test_audio_3.wav"
+
+    convert_to_wav(mp3_path_3, wav_path_3)
+
+    print(f'Converted "{mp3_path_3}" to "{wav_path_3}".')

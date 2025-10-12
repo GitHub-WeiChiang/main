@@ -79,3 +79,6 @@ if __name__ == "__main__":
 
     prompt = "討論主題: 有關於法令紋與肉毒"
     main("./audio/test_audio_2.wav", "./transcript/whisper_2.txt", prompt)
+
+    prompt = "討論主題: 有關於人生的意義"
+    main("./audio/test_audio_3.wav", "./transcript/whisper_3.txt", prompt)
