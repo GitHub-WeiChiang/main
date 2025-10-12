@@ -34,6 +34,8 @@ def main(
         language: str = "zh",
         model_size: str = "large"
 ):
+    print("正在進行轉錄 [", initial_prompt, "]")
+
     # 檢查模型大小是否在允許清單內
     if model_size not in ["tiny", "base", "small", "medium", "large"]:
         raise ValueError("model_size must be one of ['small', 'medium', 'large']")
@@ -73,5 +75,7 @@ if __name__ == "__main__":
     os.environ["XDG_CACHE_HOME"] = "./model"
 
     prompt = "討論主題: 有關於飛彈的攔截率"
+    main("./audio/test_audio_1.wav", "./transcript/whisper_1.txt", prompt)
 
-    main("./audio/test_audio.wav", "./transcript/whisper.txt", prompt)
+    prompt = "討論主題: 有關於法令紋與肉毒"
+    main("./audio/test_audio_2.wav", "./transcript/whisper_2.txt", prompt)

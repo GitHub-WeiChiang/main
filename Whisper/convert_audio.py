@@ -51,9 +51,16 @@ def convert_to_wav(src, dst, ch=1, sr=16000):
     audio.export(dst, format="wav")
 
 if __name__ == "__main__":
-    mp3_path = "./audio/test_audio.mp3"
-    wav_path = "./audio/test_audio.wav"
+    mp3_path_1 = "./audio/test_audio_1.mp3"
+    wav_path_1 = "./audio/test_audio_1.wav"
 
-    convert_to_wav(mp3_path, wav_path)
+    convert_to_wav(mp3_path_1, wav_path_1)
+    
+    print(f'Converted "{mp3_path_1}" to "{wav_path_1}".')
 
-    print(f'Converted "{mp3_path}" to "{wav_path}".')
+    mp3_path_2 = "./audio/test_audio_2.mp3"
+    wav_path_2 = "./audio/test_audio_2.wav"
+
+    convert_to_wav(mp3_path_2, wav_path_2)
+
+    print(f'Converted "{mp3_path_2}" to "{wav_path_2}".')
