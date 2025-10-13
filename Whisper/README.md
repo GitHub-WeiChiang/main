@@ -7,7 +7,7 @@ QuickStart
 
 python3 -m venv venv
 
-source venv/bin/activate
+source ./venv/bin/activate
 
 pip install -r requirements.txt
 ```
@@ -21,7 +21,7 @@ python whisper_load_model.py
 
 python whisper_sample.py
 
-python convert_audio.py
+python split_audio.py
 ```
 ```
 deactivate
