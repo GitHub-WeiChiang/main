@@ -32,13 +32,13 @@ def main(
         output_dir: str,
         initial_prompt: str,
         language: str = "zh",
-        model_size: str = "large"
+        model_size: str = "largee"
 ):
     print("正在進行轉錄 [", initial_prompt, "]")
 
     # 檢查模型大小是否在允許清單內
     if model_size not in ["tiny", "base", "small", "medium", "large"]:
-        raise ValueError("model_size must be one of ['small', 'medium', 'large']")
+        raise ValueError("model_size must be one of ['tiny', 'base', 'small', 'medium', 'large']")
     
     # 載入對應尺寸的 Whisper 模型
     model = whisper.load_model(model_size)
